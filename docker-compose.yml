@@ -1,0 +1,16 @@
+services:
+  fastapi-db:
+    image: postgres:16
+    restart: always
+    container_name: fastapi-local-db
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5433:5432"
+    volumes:
+      - fastapi-pgdata:/var/lib/postgresql/data
+
+volumes:
+  fastapi-pgdata:
